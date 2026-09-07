@@ -1,0 +1,46 @@
+[
+  {
+    "candidate_id": "REC-001",
+    "candidate_name": "Rahul Kumar",
+    "email_address": "RAHUL@GMAIL.COM",
+    "phone_number": "+91 98765 43210",
+    "skills": ["JAVA", "Python", "sql"],
+    "experience": "24 months",
+    "education": "B.Tech Computer Science",
+    "location": "bangalore, india",
+    "current_role": "sw engineer"
+  },
+  {
+    "candidate_id": "REC-002",
+    "candidate_name": "Priya Sharma",
+    "email_address": "priya.sharma@techcorp.com",
+    "contact_number": "+1 (555) 019-2834",
+    "skills": ["React.js", "TypeScript", "Node.js"],
+    "work_experience": "4.5 years",
+    "qualification": "M.S. Software Engineering",
+    "city": "San Jose, CA",
+    "job_title": "Frontend Lead"
+  },
+  {
+    "candidate_id": "REC-003",
+    "full_name": "Rahul K",
+    "email": "rahul@gmail.com",
+    "mobile": "9876543210",
+    "technical_skills": ["Java", "Docker", "Kubernetes"],
+    "exp_years": "2 years",
+    "university": "IIT Bangalore",
+    "address": "Bengaluru, India",
+    "position": "Software Developer"
+  },
+  {
+    "candidate_id": "REC-004",
+    "name": "Amit Patel",
+    "email": "amit.patel@domain.org",
+    "phone": "+91-9988776655",
+    "skills": ["AWS", "Docker", "Python3", "Git"],
+    "experience": "6 yrs",
+    "education": "B.E. Information Technology",
+    "location": "Mumbai, MH",
+    "title": "DevOps Specialist"
+  }
+]

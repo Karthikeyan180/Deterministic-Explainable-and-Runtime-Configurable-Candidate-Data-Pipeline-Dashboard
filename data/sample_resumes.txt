@@ -1,0 +1,20 @@
+CANDIDATE #1:
+Name: Vikram Singh
+Email: vikram.singh@cloudsystems.com
+Phone: +91 97112 23344
+Skills: Python, Machine Learning, Deep Learning, PyTorch, SQL
+Experience: 3.5 years
+Education: M.Tech Artificial Intelligence
+Location: Hyderabad, India
+Title: Data Scientist
+
+==================================================
+
+CANDIDATE #2:
+Name: Ananya Verma
+Email: ananya.v@designhub.io
+Phone: +919123456789
+Skills: Figma, UI/UX, React, CSS
+Experience: 3 years
+Location: Delhi, India
+Title: Lead UX Designer

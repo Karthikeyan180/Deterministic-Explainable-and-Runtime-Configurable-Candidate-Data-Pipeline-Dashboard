@@ -1,0 +1,25 @@
+{
+  "version": "1.0",
+  "description": "Rules and thresholds for candidate record deduplication",
+  "thresholds": {
+    "duplicate": 0.85,
+    "possible_match": 0.65
+  },
+  "attribute_weights": {
+    "email": 0.45,
+    "phone": 0.30,
+    "name": 0.15,
+    "location": 0.05,
+    "experience_years": 0.05
+  },
+  "exact_match_override": {
+    "email": true,
+    "phone": true
+  },
+  "similarity_algorithms": {
+    "name": "jaro_winkler",
+    "email": "exact_normalized",
+    "phone": "exact_normalized",
+    "skills": "jaccard_index"
+  }
+}

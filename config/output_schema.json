@@ -1,0 +1,101 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CanonicalCandidateProfile",
+  "type": "object",
+  "required": [
+    "candidate_id",
+    "overall_confidence",
+    "merged_sources",
+    "profile"
+  ],
+  "properties": {
+    "candidate_id": {
+      "type": "string",
+      "pattern": "^CAN-[A-Z0-9]{8}$"
+    },
+    "overall_confidence": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "merged_sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "profile": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/FieldValueString"
+        },
+        "email": {
+          "$ref": "#/definitions/FieldValueEmail"
+        },
+        "phone": {
+          "$ref": "#/definitions/FieldValueString"
+        },
+        "skills": {
+          "$ref": "#/definitions/FieldValueArray"
+        },
+        "experience_years": {
+          "$ref": "#/definitions/FieldValueNumber"
+        },
+        "education": {
+          "$ref": "#/definitions/FieldValueString"
+        },
+        "location": {
+          "$ref": "#/definitions/FieldValueString"
+        },
+        "title": {
+          "$ref": "#/definitions/FieldValueString"
+        }
+      }
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "definitions": {
+    "FieldValueString": {
+      "type": "object",
+      "required": ["value", "confidence"],
+      "properties": {
+        "value": { "type": "string" },
+        "confidence": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "provenance": { "type": "array" }
+      }
+    },
+    "FieldValueEmail": {
+      "type": "object",
+      "required": ["value", "confidence"],
+      "properties": {
+        "value": { "type": "string", "pattern": "^[^@]+@[^@]+\\.[^@]+$" },
+        "confidence": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "provenance": { "type": "array" }
+      }
+    },
+    "FieldValueNumber": {
+      "type": "object",
+      "required": ["value", "confidence"],
+      "properties": {
+        "value": { "type": "number" },
+        "confidence": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "provenance": { "type": "array" }
+      }
+    },
+    "FieldValueArray": {
+      "type": "object",
+      "required": ["value", "confidence"],
+      "properties": {
+        "value": { "type": "array", "items": { "type": "string" } },
+        "confidence": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "provenance": { "type": "array" }
+      }
+    }
+  }
+}

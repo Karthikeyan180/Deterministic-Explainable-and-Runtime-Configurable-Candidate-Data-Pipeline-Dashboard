@@ -1,0 +1,92 @@
+{
+  "version": "1.0",
+  "description": "Runtime configurable field mappings for multi-source candidate ingestion",
+  "canonical_fields": [
+    "name",
+    "email",
+    "phone",
+    "skills",
+    "experience_years",
+    "education",
+    "location",
+    "title"
+  ],
+  "mappings": {
+    "name": [
+      "name",
+      "full_name",
+      "candidate_name",
+      "applicant_name",
+      "person_name",
+      "display_name",
+      "first_name_last_name"
+    ],
+    "email": [
+      "email",
+      "email_address",
+      "mail",
+      "contact_email",
+      "candidate_email",
+      "applicant_email"
+    ],
+    "phone": [
+      "phone",
+      "phone_number",
+      "contact_number",
+      "mobile",
+      "mobile_number",
+      "telephone",
+      "cell"
+    ],
+    "skills": [
+      "skills",
+      "technical_skills",
+      "key_skills",
+      "skill_set",
+      "technologies",
+      "competencies",
+      "expertise"
+    ],
+    "experience_years": [
+      "experience",
+      "experience_years",
+      "years_of_experience",
+      "total_experience",
+      "work_experience",
+      "exp_years",
+      "years_exp"
+    ],
+    "education": [
+      "education",
+      "degree",
+      "qualification",
+      "highest_education",
+      "academic_background",
+      "university"
+    ],
+    "location": [
+      "location",
+      "city",
+      "address",
+      "current_location",
+      "residence",
+      "state_country"
+    ],
+    "title": [
+      "title",
+      "job_title",
+      "designation",
+      "current_role",
+      "position",
+      "role"
+    ]
+  },
+  "source_priorities": {
+    "hr_database": 1.0,
+    "application_form": 0.9,
+    "resume": 0.85,
+    "job_portal": 0.8,
+    "csv": 0.75,
+    "unknown": 0.6
+  }
+}
