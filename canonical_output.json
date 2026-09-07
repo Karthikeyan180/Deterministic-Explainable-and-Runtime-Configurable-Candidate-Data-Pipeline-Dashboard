@@ -1,0 +1,1558 @@
+{
+  "summary": {
+    "total_raw_records": 9,
+    "canonical_profiles_count": 5,
+    "duplicate_matches_found": 4,
+    "failed_records_count": 0,
+    "execution_time_ms": 22.96
+  },
+  "canonical_profiles": [
+    {
+      "candidate_id": "CAN-F436FCE3",
+      "overall_confidence": 0.38,
+      "merged_sources": [
+        "sample_candidates.json"
+      ],
+      "profile": {
+        "name": {
+          "value": "Rahul Kumar",
+          "confidence": 0.6,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "candidate_name",
+              "raw_value": "Rahul Kumar",
+              "transformed_value": "Rahul Kumar",
+              "transformation_rules": [
+                "normalized_whitespace",
+                "selected_in_conflict"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.1396468
+            },
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "full_name",
+              "raw_value": "Rahul K",
+              "transformed_value": "Rahul K",
+              "transformation_rules": [
+                "normalized_whitespace",
+                "rejected_in_conflict"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.139668
+            }
+          ]
+        },
+        "email": {
+          "value": "rahul@gmail.com",
+          "confidence": 0.7,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "email_address",
+              "raw_value": "RAHUL@GMAIL.COM",
+              "transformed_value": "rahul@gmail.com",
+              "transformation_rules": [
+                "lowercased",
+                "validated_email_pattern"
+              ],
+              "confidence_score": 0.65,
+              "timestamp": 1788803369.1396468
+            },
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "email",
+              "raw_value": "rahul@gmail.com",
+              "transformed_value": "rahul@gmail.com",
+              "transformation_rules": [
+                "validated_email_pattern"
+              ],
+              "confidence_score": 0.65,
+              "timestamp": 1788803369.139668
+            }
+          ]
+        },
+        "phone": {
+          "value": "+919876543210",
+          "confidence": 0.6,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "phone_number",
+              "raw_value": "+91 98765 43210",
+              "transformed_value": "+919876543210",
+              "transformation_rules": [
+                "removed_non_digits",
+                "retained_country_code_plus",
+                "selected_in_conflict"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.1396468
+            },
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "mobile",
+              "raw_value": "9876543210",
+              "transformed_value": "9876543210",
+              "transformation_rules": [
+                "removed_non_digits",
+                "rejected_in_conflict"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.139668
+            }
+          ]
+        },
+        "skills": {
+          "value": [
+            "Docker",
+            "Java",
+            "Kubernetes",
+            "Python",
+            "SQL"
+          ],
+          "confidence": 0.6,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "skills",
+              "raw_value": [
+                "JAVA",
+                "Python",
+                "sql"
+              ],
+              "transformed_value": [
+                "Java",
+                "Python",
+                "SQL"
+              ],
+              "transformation_rules": [
+                "processed_skill_array",
+                "mapped_JAVA_to_Java",
+                "mapped_Python_to_Python",
+                "mapped_sql_to_SQL",
+                "merged_skills_union"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.1396468
+            },
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "technical_skills",
+              "raw_value": [
+                "Java",
+                "Docker",
+                "Kubernetes"
+              ],
+              "transformed_value": [
+                "Docker",
+                "Java",
+                "Kubernetes"
+              ],
+              "transformation_rules": [
+                "processed_skill_array",
+                "mapped_Java_to_Java",
+                "mapped_Docker_to_Docker",
+                "mapped_Kubernetes_to_Kubernetes",
+                "merged_skills_union"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.139668
+            }
+          ]
+        },
+        "experience_years": {
+          "value": 2.0,
+          "confidence": 0.65,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "experience",
+              "raw_value": "24 months",
+              "transformed_value": 2.0,
+              "transformation_rules": [
+                "converted_months_to_years_24.0_to_2.0"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.1396468
+            },
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "exp_years",
+              "raw_value": "2 years",
+              "transformed_value": 2.0,
+              "transformation_rules": [
+                "extracted_numeric_years"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.139668
+            }
+          ]
+        },
+        "education": {
+          "value": "B.Tech Computer Science",
+          "confidence": 0.6,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "education",
+              "raw_value": "B.Tech Computer Science",
+              "transformed_value": "B.Tech Computer Science",
+              "transformation_rules": [
+                "trimmed_whitespace",
+                "selected_in_conflict"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.1396468
+            },
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "university",
+              "raw_value": "IIT Bangalore",
+              "transformed_value": "IIT Bangalore",
+              "transformation_rules": [
+                "trimmed_whitespace",
+                "rejected_in_conflict"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.139668
+            }
+          ]
+        },
+        "location": {
+          "value": "Bangalore, India",
+          "confidence": 0.6,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "location",
+              "raw_value": "bangalore, india",
+              "transformed_value": "Bangalore, India",
+              "transformation_rules": [
+                "trimmed_whitespace",
+                "title_cased_parts",
+                "selected_in_conflict"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.1396468
+            },
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "address",
+              "raw_value": "Bengaluru, India",
+              "transformed_value": "Bengaluru, India",
+              "transformation_rules": [
+                "trimmed_whitespace",
+                "title_cased_parts",
+                "rejected_in_conflict"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.139668
+            }
+          ]
+        },
+        "title": {
+          "value": "Software Engineer",
+          "confidence": 0.6,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "current_role",
+              "raw_value": "sw engineer",
+              "transformed_value": "Software Engineer",
+              "transformation_rules": [
+                "expanded_title_abbreviations",
+                "selected_in_conflict"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.1396468
+            },
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "position",
+              "raw_value": "Software Developer",
+              "transformed_value": "Software Developer",
+              "transformation_rules": [
+                "expanded_title_abbreviations",
+                "rejected_in_conflict"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.139668
+            }
+          ]
+        }
+      },
+      "conflicts": [
+        {
+          "field_name": "name",
+          "competing_values": [
+            {
+              "source_id": "sample_candidates.json",
+              "value": "Rahul Kumar",
+              "confidence": 0.6
+            },
+            {
+              "source_id": "sample_candidates.json",
+              "value": "Rahul K",
+              "confidence": 0.6
+            }
+          ],
+          "resolved_value": "Rahul Kumar",
+          "resolution_strategy": "highest_confidence",
+          "explanation": "Selected value with highest confidence score (0.60)"
+        },
+        {
+          "field_name": "phone",
+          "competing_values": [
+            {
+              "source_id": "sample_candidates.json",
+              "value": "+919876543210",
+              "confidence": 0.6
+            },
+            {
+              "source_id": "sample_candidates.json",
+              "value": "9876543210",
+              "confidence": 0.6
+            }
+          ],
+          "resolved_value": "+919876543210",
+          "resolution_strategy": "highest_confidence",
+          "explanation": "Selected value with highest confidence score (0.60)"
+        },
+        {
+          "field_name": "education",
+          "competing_values": [
+            {
+              "source_id": "sample_candidates.json",
+              "value": "B.Tech Computer Science",
+              "confidence": 0.6
+            },
+            {
+              "source_id": "sample_candidates.json",
+              "value": "IIT Bangalore",
+              "confidence": 0.6
+            }
+          ],
+          "resolved_value": "B.Tech Computer Science",
+          "resolution_strategy": "highest_confidence",
+          "explanation": "Selected value with highest confidence score (0.60)"
+        },
+        {
+          "field_name": "location",
+          "competing_values": [
+            {
+              "source_id": "sample_candidates.json",
+              "value": "Bangalore, India",
+              "confidence": 0.6
+            },
+            {
+              "source_id": "sample_candidates.json",
+              "value": "Bengaluru, India",
+              "confidence": 0.6
+            }
+          ],
+          "resolved_value": "Bangalore, India",
+          "resolution_strategy": "highest_confidence",
+          "explanation": "Selected value with highest confidence score (0.60)"
+        },
+        {
+          "field_name": "title",
+          "competing_values": [
+            {
+              "source_id": "sample_candidates.json",
+              "value": "Software Engineer",
+              "confidence": 0.6
+            },
+            {
+              "source_id": "sample_candidates.json",
+              "value": "Software Developer",
+              "confidence": 0.6
+            }
+          ],
+          "resolved_value": "Software Engineer",
+          "resolution_strategy": "highest_confidence",
+          "explanation": "Selected value with highest confidence score (0.60)"
+        }
+      ]
+    },
+    {
+      "candidate_id": "CAN-9F19D34C",
+      "overall_confidence": 0.5262,
+      "merged_sources": [
+        "sample_candidates.json",
+        "sample_candidates.csv"
+      ],
+      "profile": {
+        "name": {
+          "value": "Priya Sharma",
+          "confidence": 0.65,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "candidate_name",
+              "raw_value": "Priya Sharma",
+              "transformed_value": "Priya Sharma",
+              "transformation_rules": [
+                "normalized_whitespace"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.1396632
+            },
+            {
+              "source_id": "sample_candidates.csv",
+              "raw_key": "applicant_name",
+              "raw_value": "Priya Sharma",
+              "transformed_value": "Priya Sharma",
+              "transformation_rules": [
+                "normalized_whitespace"
+              ],
+              "confidence_score": 0.75,
+              "timestamp": 1788803369.1424444
+            }
+          ]
+        },
+        "email": {
+          "value": "priya.sharma@techcorp.com",
+          "confidence": 0.7,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "email_address",
+              "raw_value": "priya.sharma@techcorp.com",
+              "transformed_value": "priya.sharma@techcorp.com",
+              "transformation_rules": [
+                "validated_email_pattern"
+              ],
+              "confidence_score": 0.65,
+              "timestamp": 1788803369.1396632
+            },
+            {
+              "source_id": "sample_candidates.csv",
+              "raw_key": "contact_email",
+              "raw_value": "priya.sharma@techcorp.com",
+              "transformed_value": "priya.sharma@techcorp.com",
+              "transformation_rules": [
+                "validated_email_pattern"
+              ],
+              "confidence_score": 0.8,
+              "timestamp": 1788803369.1424444
+            }
+          ]
+        },
+        "phone": {
+          "value": "+15550192834",
+          "confidence": 0.65,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "contact_number",
+              "raw_value": "+1 (555) 019-2834",
+              "transformed_value": "+15550192834",
+              "transformation_rules": [
+                "removed_non_digits",
+                "retained_country_code_plus"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.1396632
+            },
+            {
+              "source_id": "sample_candidates.csv",
+              "raw_key": "mobile_number",
+              "raw_value": "+1-555-019-2834",
+              "transformed_value": "+15550192834",
+              "transformation_rules": [
+                "removed_non_digits",
+                "retained_country_code_plus"
+              ],
+              "confidence_score": 0.75,
+              "timestamp": 1788803369.1424444
+            }
+          ]
+        },
+        "skills": {
+          "value": [
+            "CSS",
+            "HTML",
+            "JavaScript",
+            "Node.js",
+            "React",
+            "TypeScript"
+          ],
+          "confidence": 0.675,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "skills",
+              "raw_value": [
+                "React.js",
+                "TypeScript",
+                "Node.js"
+              ],
+              "transformed_value": [
+                "Node.js",
+                "React",
+                "TypeScript"
+              ],
+              "transformation_rules": [
+                "processed_skill_array",
+                "mapped_React.js_to_React",
+                "mapped_TypeScript_to_TypeScript",
+                "mapped_Node.js_to_Node.js",
+                "merged_skills_union"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.1396632
+            },
+            {
+              "source_id": "sample_candidates.csv",
+              "raw_key": "skill_set",
+              "raw_value": "React, JavaScript, HTML, CSS",
+              "transformed_value": [
+                "CSS",
+                "HTML",
+                "JavaScript",
+                "React"
+              ],
+              "transformation_rules": [
+                "split_skill_string",
+                "mapped_React_to_React",
+                "mapped_JavaScript_to_JavaScript",
+                "mapped_HTML_to_HTML",
+                "mapped_CSS_to_CSS",
+                "merged_skills_union"
+              ],
+              "confidence_score": 0.75,
+              "timestamp": 1788803369.1424444
+            }
+          ]
+        },
+        "experience_years": {
+          "value": 4.5,
+          "confidence": 0.65,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "work_experience",
+              "raw_value": "4.5 years",
+              "transformed_value": 4.5,
+              "transformation_rules": [
+                "extracted_numeric_years"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.1396632
+            },
+            {
+              "source_id": "sample_candidates.csv",
+              "raw_key": "total_experience",
+              "raw_value": "54 months",
+              "transformed_value": 4.5,
+              "transformation_rules": [
+                "converted_months_to_years_54.0_to_4.5"
+              ],
+              "confidence_score": 0.75,
+              "timestamp": 1788803369.1424444
+            }
+          ]
+        },
+        "education": {
+          "value": "M.S. SE",
+          "confidence": 0.75,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "qualification",
+              "raw_value": "M.S. Software Engineering",
+              "transformed_value": "M.S. Software Engineering",
+              "transformation_rules": [
+                "trimmed_whitespace",
+                "rejected_in_conflict"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.1396632
+            },
+            {
+              "source_id": "sample_candidates.csv",
+              "raw_key": "highest_education",
+              "raw_value": "M.S. SE",
+              "transformed_value": "M.S. SE",
+              "transformation_rules": [
+                "trimmed_whitespace",
+                "selected_in_conflict"
+              ],
+              "confidence_score": 0.75,
+              "timestamp": 1788803369.1424444
+            }
+          ]
+        },
+        "location": {
+          "value": "San Jose, California",
+          "confidence": 0.75,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "city",
+              "raw_value": "San Jose, CA",
+              "transformed_value": "San Jose, Ca",
+              "transformation_rules": [
+                "trimmed_whitespace",
+                "title_cased_parts",
+                "rejected_in_conflict"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.1396632
+            },
+            {
+              "source_id": "sample_candidates.csv",
+              "raw_key": "current_location",
+              "raw_value": "San Jose, California",
+              "transformed_value": "San Jose, California",
+              "transformation_rules": [
+                "trimmed_whitespace",
+                "title_cased_parts",
+                "selected_in_conflict"
+              ],
+              "confidence_score": 0.75,
+              "timestamp": 1788803369.1424444
+            }
+          ]
+        },
+        "title": {
+          "value": "Senior. Frontend Developer",
+          "confidence": 0.75,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "job_title",
+              "raw_value": "Frontend Lead",
+              "transformed_value": "Frontend Lead",
+              "transformation_rules": [
+                "expanded_title_abbreviations",
+                "rejected_in_conflict"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.1396632
+            },
+            {
+              "source_id": "sample_candidates.csv",
+              "raw_key": "role",
+              "raw_value": "Sr. Frontend Developer",
+              "transformed_value": "Senior. Frontend Developer",
+              "transformation_rules": [
+                "expanded_title_abbreviations",
+                "selected_in_conflict"
+              ],
+              "confidence_score": 0.75,
+              "timestamp": 1788803369.1424444
+            }
+          ]
+        }
+      },
+      "conflicts": [
+        {
+          "field_name": "education",
+          "competing_values": [
+            {
+              "source_id": "sample_candidates.json",
+              "value": "M.S. Software Engineering",
+              "confidence": 0.6
+            },
+            {
+              "source_id": "sample_candidates.csv",
+              "value": "M.S. SE",
+              "confidence": 0.75
+            }
+          ],
+          "resolved_value": "M.S. SE",
+          "resolution_strategy": "highest_confidence",
+          "explanation": "Selected value with highest confidence score (0.75)"
+        },
+        {
+          "field_name": "location",
+          "competing_values": [
+            {
+              "source_id": "sample_candidates.json",
+              "value": "San Jose, Ca",
+              "confidence": 0.6
+            },
+            {
+              "source_id": "sample_candidates.csv",
+              "value": "San Jose, California",
+              "confidence": 0.75
+            }
+          ],
+          "resolved_value": "San Jose, California",
+          "resolution_strategy": "highest_confidence",
+          "explanation": "Selected value with highest confidence score (0.75)"
+        },
+        {
+          "field_name": "title",
+          "competing_values": [
+            {
+              "source_id": "sample_candidates.json",
+              "value": "Frontend Lead",
+              "confidence": 0.6
+            },
+            {
+              "source_id": "sample_candidates.csv",
+              "value": "Senior. Frontend Developer",
+              "confidence": 0.75
+            }
+          ],
+          "resolved_value": "Senior. Frontend Developer",
+          "resolution_strategy": "highest_confidence",
+          "explanation": "Selected value with highest confidence score (0.75)"
+        }
+      ]
+    },
+    {
+      "candidate_id": "CAN-BDCE10FD",
+      "overall_confidence": 0.5262,
+      "merged_sources": [
+        "sample_candidates.json",
+        "sample_candidates.csv"
+      ],
+      "profile": {
+        "name": {
+          "value": "Amit Patel",
+          "confidence": 0.65,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "name",
+              "raw_value": "Amit Patel",
+              "transformed_value": "Amit Patel",
+              "transformation_rules": [
+                "normalized_whitespace"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.1396713
+            },
+            {
+              "source_id": "sample_candidates.csv",
+              "raw_key": "applicant_name",
+              "raw_value": "Amit Patel",
+              "transformed_value": "Amit Patel",
+              "transformation_rules": [
+                "normalized_whitespace"
+              ],
+              "confidence_score": 0.75,
+              "timestamp": 1788803369.142505
+            }
+          ]
+        },
+        "email": {
+          "value": "amit.patel@domain.org",
+          "confidence": 0.7,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "email",
+              "raw_value": "amit.patel@domain.org",
+              "transformed_value": "amit.patel@domain.org",
+              "transformation_rules": [
+                "validated_email_pattern"
+              ],
+              "confidence_score": 0.65,
+              "timestamp": 1788803369.1396713
+            },
+            {
+              "source_id": "sample_candidates.csv",
+              "raw_key": "contact_email",
+              "raw_value": "amit.patel@domain.org",
+              "transformed_value": "amit.patel@domain.org",
+              "transformation_rules": [
+                "validated_email_pattern"
+              ],
+              "confidence_score": 0.8,
+              "timestamp": 1788803369.142505
+            }
+          ]
+        },
+        "phone": {
+          "value": "+919988776655",
+          "confidence": 0.65,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "phone",
+              "raw_value": "+91-9988776655",
+              "transformed_value": "+919988776655",
+              "transformation_rules": [
+                "removed_non_digits",
+                "retained_country_code_plus"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.1396713
+            },
+            {
+              "source_id": "sample_candidates.csv",
+              "raw_key": "mobile_number",
+              "raw_value": "+91-9988776655",
+              "transformed_value": "+919988776655",
+              "transformation_rules": [
+                "removed_non_digits",
+                "retained_country_code_plus"
+              ],
+              "confidence_score": 0.75,
+              "timestamp": 1788803369.142505
+            }
+          ]
+        },
+        "skills": {
+          "value": [
+            "AWS",
+            "Docker",
+            "Git",
+            "Kubernetes",
+            "Python"
+          ],
+          "confidence": 0.675,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "skills",
+              "raw_value": [
+                "AWS",
+                "Docker",
+                "Python3",
+                "Git"
+              ],
+              "transformed_value": [
+                "AWS",
+                "Docker",
+                "Git",
+                "Python"
+              ],
+              "transformation_rules": [
+                "processed_skill_array",
+                "mapped_AWS_to_AWS",
+                "mapped_Docker_to_Docker",
+                "mapped_Python3_to_Python",
+                "mapped_Git_to_Git",
+                "merged_skills_union"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.1396713
+            },
+            {
+              "source_id": "sample_candidates.csv",
+              "raw_key": "skill_set",
+              "raw_value": "AWS, Kubernetes, Python",
+              "transformed_value": [
+                "AWS",
+                "Kubernetes",
+                "Python"
+              ],
+              "transformation_rules": [
+                "split_skill_string",
+                "mapped_AWS_to_AWS",
+                "mapped_Kubernetes_to_Kubernetes",
+                "mapped_Python_to_Python",
+                "merged_skills_union"
+              ],
+              "confidence_score": 0.75,
+              "timestamp": 1788803369.142505
+            }
+          ]
+        },
+        "experience_years": {
+          "value": 6.0,
+          "confidence": 0.65,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "experience",
+              "raw_value": "6 yrs",
+              "transformed_value": 6.0,
+              "transformation_rules": [
+                "extracted_numeric_years"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.1396713
+            },
+            {
+              "source_id": "sample_candidates.csv",
+              "raw_key": "total_experience",
+              "raw_value": "6 years",
+              "transformed_value": 6.0,
+              "transformation_rules": [
+                "extracted_numeric_years"
+              ],
+              "confidence_score": 0.75,
+              "timestamp": 1788803369.142505
+            }
+          ]
+        },
+        "education": {
+          "value": "B.E. IT",
+          "confidence": 0.75,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "education",
+              "raw_value": "B.E. Information Technology",
+              "transformed_value": "B.E. Information Technology",
+              "transformation_rules": [
+                "trimmed_whitespace",
+                "rejected_in_conflict"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.1396713
+            },
+            {
+              "source_id": "sample_candidates.csv",
+              "raw_key": "highest_education",
+              "raw_value": "B.E. IT",
+              "transformed_value": "B.E. IT",
+              "transformation_rules": [
+                "trimmed_whitespace",
+                "selected_in_conflict"
+              ],
+              "confidence_score": 0.75,
+              "timestamp": 1788803369.142505
+            }
+          ]
+        },
+        "location": {
+          "value": "Mumbai India",
+          "confidence": 0.75,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "location",
+              "raw_value": "Mumbai, MH",
+              "transformed_value": "Mumbai, Mh",
+              "transformation_rules": [
+                "trimmed_whitespace",
+                "title_cased_parts",
+                "rejected_in_conflict"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.1396713
+            },
+            {
+              "source_id": "sample_candidates.csv",
+              "raw_key": "current_location",
+              "raw_value": "Mumbai India",
+              "transformed_value": "Mumbai India",
+              "transformation_rules": [
+                "trimmed_whitespace",
+                "title_cased_parts",
+                "selected_in_conflict"
+              ],
+              "confidence_score": 0.75,
+              "timestamp": 1788803369.142505
+            }
+          ]
+        },
+        "title": {
+          "value": "Senior Devops Engineer",
+          "confidence": 0.75,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.json",
+              "raw_key": "title",
+              "raw_value": "DevOps Specialist",
+              "transformed_value": "Devops Specialist",
+              "transformation_rules": [
+                "expanded_title_abbreviations",
+                "rejected_in_conflict"
+              ],
+              "confidence_score": 0.6,
+              "timestamp": 1788803369.1396713
+            },
+            {
+              "source_id": "sample_candidates.csv",
+              "raw_key": "role",
+              "raw_value": "Senior DevOps Engineer",
+              "transformed_value": "Senior Devops Engineer",
+              "transformation_rules": [
+                "expanded_title_abbreviations",
+                "selected_in_conflict"
+              ],
+              "confidence_score": 0.75,
+              "timestamp": 1788803369.142505
+            }
+          ]
+        }
+      },
+      "conflicts": [
+        {
+          "field_name": "education",
+          "competing_values": [
+            {
+              "source_id": "sample_candidates.json",
+              "value": "B.E. Information Technology",
+              "confidence": 0.6
+            },
+            {
+              "source_id": "sample_candidates.csv",
+              "value": "B.E. IT",
+              "confidence": 0.75
+            }
+          ],
+          "resolved_value": "B.E. IT",
+          "resolution_strategy": "highest_confidence",
+          "explanation": "Selected value with highest confidence score (0.75)"
+        },
+        {
+          "field_name": "location",
+          "competing_values": [
+            {
+              "source_id": "sample_candidates.json",
+              "value": "Mumbai, Mh",
+              "confidence": 0.6
+            },
+            {
+              "source_id": "sample_candidates.csv",
+              "value": "Mumbai India",
+              "confidence": 0.75
+            }
+          ],
+          "resolved_value": "Mumbai India",
+          "resolution_strategy": "highest_confidence",
+          "explanation": "Selected value with highest confidence score (0.75)"
+        },
+        {
+          "field_name": "title",
+          "competing_values": [
+            {
+              "source_id": "sample_candidates.json",
+              "value": "Devops Specialist",
+              "confidence": 0.6
+            },
+            {
+              "source_id": "sample_candidates.csv",
+              "value": "Senior Devops Engineer",
+              "confidence": 0.75
+            }
+          ],
+          "resolved_value": "Senior Devops Engineer",
+          "resolution_strategy": "highest_confidence",
+          "explanation": "Selected value with highest confidence score (0.75)"
+        }
+      ]
+    },
+    {
+      "candidate_id": "CAN-8A7BCBC3",
+      "overall_confidence": 0.7125,
+      "merged_sources": [
+        "sample_candidates.csv",
+        "sample_resumes.txt"
+      ],
+      "profile": {
+        "name": {
+          "value": "Ananya Verma",
+          "confidence": 0.8,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.csv",
+              "raw_key": "applicant_name",
+              "raw_value": "Ananya Verma",
+              "transformed_value": "Ananya Verma",
+              "transformation_rules": [
+                "normalized_whitespace"
+              ],
+              "confidence_score": 0.75,
+              "timestamp": 1788803369.142485
+            },
+            {
+              "source_id": "sample_resumes.txt",
+              "raw_key": "name",
+              "raw_value": "Ananya Verma",
+              "transformed_value": "Ananya Verma",
+              "transformation_rules": [
+                "normalized_whitespace"
+              ],
+              "confidence_score": 0.85,
+              "timestamp": 1788803369.1448274
+            }
+          ]
+        },
+        "email": {
+          "value": "ananya.v@designhub.io",
+          "confidence": 0.85,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.csv",
+              "raw_key": "contact_email",
+              "raw_value": "ananya.v@designhub.io",
+              "transformed_value": "ananya.v@designhub.io",
+              "transformation_rules": [
+                "validated_email_pattern"
+              ],
+              "confidence_score": 0.8,
+              "timestamp": 1788803369.142485
+            },
+            {
+              "source_id": "sample_resumes.txt",
+              "raw_key": "email",
+              "raw_value": "ananya.v@designhub.io",
+              "transformed_value": "ananya.v@designhub.io",
+              "transformation_rules": [
+                "validated_email_pattern"
+              ],
+              "confidence_score": 0.9,
+              "timestamp": 1788803369.1448274
+            }
+          ]
+        },
+        "phone": {
+          "value": "+919123456789",
+          "confidence": 0.8,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.csv",
+              "raw_key": "mobile_number",
+              "raw_value": "+91 91234 56789",
+              "transformed_value": "+919123456789",
+              "transformation_rules": [
+                "removed_non_digits",
+                "retained_country_code_plus"
+              ],
+              "confidence_score": 0.75,
+              "timestamp": 1788803369.142485
+            },
+            {
+              "source_id": "sample_resumes.txt",
+              "raw_key": "phone",
+              "raw_value": "+919123456789",
+              "transformed_value": "+919123456789",
+              "transformation_rules": [
+                "removed_non_digits",
+                "retained_country_code_plus"
+              ],
+              "confidence_score": 0.85,
+              "timestamp": 1788803369.1448274
+            }
+          ]
+        },
+        "skills": {
+          "value": [
+            "CSS",
+            "Figma",
+            "HTML",
+            "React",
+            "Ui/Ux"
+          ],
+          "confidence": 0.8,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.csv",
+              "raw_key": "skill_set",
+              "raw_value": "UI/UX, Figma, HTML, CSS",
+              "transformed_value": [
+                "CSS",
+                "Figma",
+                "HTML",
+                "Ui/Ux"
+              ],
+              "transformation_rules": [
+                "split_skill_string",
+                "title_cased_UI/UX",
+                "title_cased_Figma",
+                "mapped_HTML_to_HTML",
+                "mapped_CSS_to_CSS",
+                "merged_skills_union"
+              ],
+              "confidence_score": 0.75,
+              "timestamp": 1788803369.142485
+            },
+            {
+              "source_id": "sample_resumes.txt",
+              "raw_key": "skills",
+              "raw_value": [
+                "Figma",
+                "UI/UX",
+                "React",
+                "CSS"
+              ],
+              "transformed_value": [
+                "CSS",
+                "Figma",
+                "React",
+                "Ui/Ux"
+              ],
+              "transformation_rules": [
+                "processed_skill_array",
+                "title_cased_Figma",
+                "title_cased_UI/UX",
+                "mapped_React_to_React",
+                "mapped_CSS_to_CSS",
+                "merged_skills_union"
+              ],
+              "confidence_score": 0.85,
+              "timestamp": 1788803369.1448274
+            }
+          ]
+        },
+        "experience_years": {
+          "value": 3.0,
+          "confidence": 0.8,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.csv",
+              "raw_key": "total_experience",
+              "raw_value": "3 yrs",
+              "transformed_value": 3.0,
+              "transformation_rules": [
+                "extracted_numeric_years"
+              ],
+              "confidence_score": 0.75,
+              "timestamp": 1788803369.142485
+            },
+            {
+              "source_id": "sample_resumes.txt",
+              "raw_key": "experience",
+              "raw_value": "3 years",
+              "transformed_value": 3.0,
+              "transformation_rules": [
+                "extracted_numeric_years"
+              ],
+              "confidence_score": 0.85,
+              "timestamp": 1788803369.1448274
+            }
+          ]
+        },
+        "education": {
+          "value": "B.Des",
+          "confidence": 0.75,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.csv",
+              "raw_key": "highest_education",
+              "raw_value": "B.Des",
+              "transformed_value": "B.Des",
+              "transformation_rules": [
+                "trimmed_whitespace"
+              ],
+              "confidence_score": 0.75,
+              "timestamp": 1788803369.142485
+            }
+          ]
+        },
+        "location": {
+          "value": "Delhi, India",
+          "confidence": 0.85,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.csv",
+              "raw_key": "current_location",
+              "raw_value": "Delhi India",
+              "transformed_value": "Delhi India",
+              "transformation_rules": [
+                "trimmed_whitespace",
+                "title_cased_parts",
+                "rejected_in_conflict"
+              ],
+              "confidence_score": 0.75,
+              "timestamp": 1788803369.142485
+            },
+            {
+              "source_id": "sample_resumes.txt",
+              "raw_key": "location",
+              "raw_value": "Delhi, India",
+              "transformed_value": "Delhi, India",
+              "transformation_rules": [
+                "trimmed_whitespace",
+                "title_cased_parts",
+                "selected_in_conflict"
+              ],
+              "confidence_score": 0.85,
+              "timestamp": 1788803369.1448274
+            }
+          ]
+        },
+        "title": {
+          "value": "Lead Ux Designer",
+          "confidence": 0.85,
+          "provenance": [
+            {
+              "source_id": "sample_candidates.csv",
+              "raw_key": "role",
+              "raw_value": "Product Designer",
+              "transformed_value": "Product Designer",
+              "transformation_rules": [
+                "expanded_title_abbreviations",
+                "rejected_in_conflict"
+              ],
+              "confidence_score": 0.75,
+              "timestamp": 1788803369.142485
+            },
+            {
+              "source_id": "sample_resumes.txt",
+              "raw_key": "title",
+              "raw_value": "Lead UX Designer",
+              "transformed_value": "Lead Ux Designer",
+              "transformation_rules": [
+                "expanded_title_abbreviations",
+                "selected_in_conflict"
+              ],
+              "confidence_score": 0.85,
+              "timestamp": 1788803369.1448274
+            }
+          ]
+        }
+      },
+      "conflicts": [
+        {
+          "field_name": "location",
+          "competing_values": [
+            {
+              "source_id": "sample_candidates.csv",
+              "value": "Delhi India",
+              "confidence": 0.75
+            },
+            {
+              "source_id": "sample_resumes.txt",
+              "value": "Delhi, India",
+              "confidence": 0.85
+            }
+          ],
+          "resolved_value": "Delhi, India",
+          "resolution_strategy": "highest_confidence",
+          "explanation": "Selected value with highest confidence score (0.85)"
+        },
+        {
+          "field_name": "title",
+          "competing_values": [
+            {
+              "source_id": "sample_candidates.csv",
+              "value": "Product Designer",
+              "confidence": 0.75
+            },
+            {
+              "source_id": "sample_resumes.txt",
+              "value": "Lead Ux Designer",
+              "confidence": 0.85
+            }
+          ],
+          "resolved_value": "Lead Ux Designer",
+          "resolution_strategy": "highest_confidence",
+          "explanation": "Selected value with highest confidence score (0.85)"
+        }
+      ]
+    },
+    {
+      "candidate_id": "CAN-BFF0614C",
+      "overall_confidence": 0.8625,
+      "merged_sources": [
+        "sample_resumes.txt"
+      ],
+      "profile": {
+        "name": {
+          "value": "Vikram Singh",
+          "confidence": 0.85,
+          "provenance": [
+            {
+              "source_id": "sample_resumes.txt",
+              "raw_key": "name",
+              "raw_value": "Vikram Singh",
+              "transformed_value": "Vikram Singh",
+              "transformation_rules": [
+                "normalized_whitespace"
+              ],
+              "confidence_score": 0.85,
+              "timestamp": 1788803369.1447542
+            }
+          ]
+        },
+        "email": {
+          "value": "vikram.singh@cloudsystems.com",
+          "confidence": 0.9,
+          "provenance": [
+            {
+              "source_id": "sample_resumes.txt",
+              "raw_key": "email",
+              "raw_value": "vikram.singh@cloudsystems.com",
+              "transformed_value": "vikram.singh@cloudsystems.com",
+              "transformation_rules": [
+                "validated_email_pattern"
+              ],
+              "confidence_score": 0.9,
+              "timestamp": 1788803369.1447542
+            }
+          ]
+        },
+        "phone": {
+          "value": "+919711223344",
+          "confidence": 0.85,
+          "provenance": [
+            {
+              "source_id": "sample_resumes.txt",
+              "raw_key": "phone",
+              "raw_value": "+91 97112 23344",
+              "transformed_value": "+919711223344",
+              "transformation_rules": [
+                "removed_non_digits",
+                "retained_country_code_plus"
+              ],
+              "confidence_score": 0.85,
+              "timestamp": 1788803369.1447542
+            }
+          ]
+        },
+        "skills": {
+          "value": [
+            "Deep Learning",
+            "Machine Learning",
+            "Python",
+            "Pytorch",
+            "SQL"
+          ],
+          "confidence": 0.85,
+          "provenance": [
+            {
+              "source_id": "sample_resumes.txt",
+              "raw_key": "skills",
+              "raw_value": [
+                "Python",
+                "Machine Learning",
+                "Deep Learning",
+                "PyTorch",
+                "SQL"
+              ],
+              "transformed_value": [
+                "Deep Learning",
+                "Machine Learning",
+                "Python",
+                "Pytorch",
+                "SQL"
+              ],
+              "transformation_rules": [
+                "processed_skill_array",
+                "mapped_Python_to_Python",
+                "mapped_Machine Learning_to_Machine Learning",
+                "mapped_Deep Learning_to_Deep Learning",
+                "title_cased_PyTorch",
+                "mapped_SQL_to_SQL"
+              ],
+              "confidence_score": 0.85,
+              "timestamp": 1788803369.1447542
+            }
+          ]
+        },
+        "experience_years": {
+          "value": 3.5,
+          "confidence": 0.85,
+          "provenance": [
+            {
+              "source_id": "sample_resumes.txt",
+              "raw_key": "experience",
+              "raw_value": "3.5 years",
+              "transformed_value": 3.5,
+              "transformation_rules": [
+                "extracted_numeric_years"
+              ],
+              "confidence_score": 0.85,
+              "timestamp": 1788803369.1447542
+            }
+          ]
+        },
+        "education": {
+          "value": "M.Tech Artificial Intelligence",
+          "confidence": 0.85,
+          "provenance": [
+            {
+              "source_id": "sample_resumes.txt",
+              "raw_key": "education",
+              "raw_value": "M.Tech Artificial Intelligence",
+              "transformed_value": "M.Tech Artificial Intelligence",
+              "transformation_rules": [
+                "trimmed_whitespace"
+              ],
+              "confidence_score": 0.85,
+              "timestamp": 1788803369.1447542
+            }
+          ]
+        },
+        "location": {
+          "value": "Hyderabad, India",
+          "confidence": 0.85,
+          "provenance": [
+            {
+              "source_id": "sample_resumes.txt",
+              "raw_key": "location",
+              "raw_value": "Hyderabad, India",
+              "transformed_value": "Hyderabad, India",
+              "transformation_rules": [
+                "trimmed_whitespace",
+                "title_cased_parts"
+              ],
+              "confidence_score": 0.85,
+              "timestamp": 1788803369.1447542
+            }
+          ]
+        },
+        "title": {
+          "value": "Data Scientist",
+          "confidence": 0.85,
+          "provenance": [
+            {
+              "source_id": "sample_resumes.txt",
+              "raw_key": "title",
+              "raw_value": "Data Scientist",
+              "transformed_value": "Data Scientist",
+              "transformation_rules": [
+                "expanded_title_abbreviations"
+              ],
+              "confidence_score": 0.85,
+              "timestamp": 1788803369.1447542
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "duplicates": [
+    {
+      "record_id_1": "REC-001",
+      "record_id_2": "REC-003",
+      "similarity_score": 1.0,
+      "matching_attributes": {
+        "email": 1.0
+      },
+      "status": "DUPLICATE",
+      "explanation": "Exact email match override (rahul@gmail.com)"
+    },
+    {
+      "record_id_1": "REC-002",
+      "record_id_2": "REC-CSV-1-344f",
+      "similarity_score": 1.0,
+      "matching_attributes": {
+        "email": 1.0
+      },
+      "status": "DUPLICATE",
+      "explanation": "Exact email match override (priya.sharma@techcorp.com)"
+    },
+    {
+      "record_id_1": "REC-004",
+      "record_id_2": "REC-CSV-3-31db",
+      "similarity_score": 1.0,
+      "matching_attributes": {
+        "email": 1.0
+      },
+      "status": "DUPLICATE",
+      "explanation": "Exact email match override (amit.patel@domain.org)"
+    },
+    {
+      "record_id_1": "REC-CSV-2-02e2",
+      "record_id_2": "REC-TXT-2-feee",
+      "similarity_score": 1.0,
+      "matching_attributes": {
+        "email": 1.0
+      },
+      "status": "DUPLICATE",
+      "explanation": "Exact email match override (ananya.v@designhub.io)"
+    }
+  ],
+  "failures": [],
+  "validation_report": {
+    "total_validated": 5,
+    "valid_count": 5,
+    "invalid_count": 0,
+    "pass_rate_pct": 100.0,
+    "errors": []
+  }
+}
