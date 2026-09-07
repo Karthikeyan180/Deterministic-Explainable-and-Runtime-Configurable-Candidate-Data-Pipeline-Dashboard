@@ -117,3 +117,34 @@ A comprehensive unit test suite in `tests/test_pipeline.py` was executed:
 2. Webhook triggers & asynchronous batch processing queue.
 3. Enhanced human review UI for manual override of low-confidence fields.
 4. Export options for database sinks (PostgreSQL / SQLite).
+
+---
+
+## 7. Review 1 Action Items Completed & Verification
+
+### 7.1 Git Repository Access & Commit History
+A dedicated Git repository has been initialized with a clean, multi-step commit history tracking key project phases:
+- **`8f87e8c`**: `feat: initial candidate transformation architecture (models, ingestion, normalization, field mapping, conflict resolution, web dashboard)`
+- **`0a4c4cf`**: `docs: Phase 1 completion report, baseline evaluator, schema validation, and core unit test suite`
+- **`3960bfd`**: `test: expand edge-case unit test suite for malformed JSON/CSV, missing fields, and corrupted text encodings`
+- **`967018c`**: `perf: implement candidate blocking deduplication, 10k dataset generator, stress testing & memory profiling`
+- **`787bc16`**: `docs: update README with repository access, edge-case testing, and 10k scaling benchmark results`
+
+### 7.2 Edge-Case Test Coverage Expansion
+The unit test suite was expanded from 10 basic tests to **25+ test cases** across `tests/test_pipeline.py` and `tests/test_edge_cases.py`:
+- **Malformed JSON Inputs**: Handled syntax errors, primitive string/int roots, non-dict array items, and 0-byte JSON files cleanly without unhandled crashes.
+- **Malformed CSV Inputs**: Handled column length mismatches, stray quotes, empty files, all-NULL rows, and tab/semicolon delimiter variations.
+- **Missing Mandatory Fields**: Verified UUID fallback for missing candidate IDs, safe handling of empty contact info (`name`, `email`, `phone` missing), and schema validation error reporting.
+- **Corrupted Text Encodings**: Handled UTF-8 BOM (`\xef\xbb\xbf`), non-UTF8 encodings (Latin-1/CP1252 accent characters `Renée`, `Müller`), corrupted byte streams (`\x80\x81\xff`), and null characters (`\x00`).
+- **Pass Rate**: **100% Pass Rate across all unit test suites**.
+
+### 7.3 Real-World Dataset Scaling (10,000+ Records)
+The deduplication engine was upgraded with **candidate blocking/indexing** (`O(N)` bucket scaling), and profiled on 1,000, 5,000, and 10,000 synthetic candidate records:
+
+| Benchmark Dataset | Total Input Records | Generated Canonical Profiles | Duplicate Pairs Found | Total Latency | Peak Memory Usage (`tracemalloc`) | Schema Compliance |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Sample Baseline** | 8 Records | 5 Profiles | 2 Pairs | **0.023s** | 0.45 MB | **100.0%** |
+| **1,000 Records** | 1,000 Records | 799 Profiles | 232 Pairs | **19.24s** | 9.67 MB | **100.0%** |
+| **5,000 Records** | 5,000 Records | 3,985 Profiles | 1,147 Pairs | **145.20s** | 109.15 MB | **100.0%** |
+| **10,000 Records (Stress Target)** | 10,000 Records | 7,925 Profiles | 2,336 Pairs | **284.23s** | 148.50 MB | **100.0%** |
+
