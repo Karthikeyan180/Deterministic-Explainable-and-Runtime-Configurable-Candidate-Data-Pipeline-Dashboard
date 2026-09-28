@@ -76,6 +76,29 @@ class ConflictRecord:
 
 
 @dataclass
+class HumanOverride:
+    """Tracks manual reviewer overrides of canonical candidate profile fields."""
+    candidate_id: str
+    field_name: str
+    old_value: Any
+    new_value: Any
+    reviewer_id: str = "system_reviewer"
+    reason: str = "Manual review override"
+    timestamp: float = field(default_factory=time.time)
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "candidate_id": self.candidate_id,
+            "field_name": self.field_name,
+            "old_value": self.old_value,
+            "new_value": self.new_value,
+            "reviewer_id": self.reviewer_id,
+            "reason": self.reason,
+            "timestamp": self.timestamp
+        }
+
+
+@dataclass
 class CanonicalProfile:
     """Unified canonical candidate profile schema."""
     candidate_id: str = field(default_factory=lambda: f"CAN-{uuid.uuid4().hex[:8].upper()}")
@@ -90,6 +113,7 @@ class CanonicalProfile:
     merged_source_ids: List[str] = field(default_factory=list)
     overall_confidence: float = 1.0
     conflicts: List[ConflictRecord] = field(default_factory=list)
+    audit_logs: List[Dict[str, Any]] = field(default_factory=list)
 
     def to_dict(self) -> Dict[str, Any]:
         result = {
@@ -106,6 +130,9 @@ class CanonicalProfile:
 
         if self.conflicts:
             result["conflicts"] = [c.to_dict() for c in self.conflicts]
+
+        if self.audit_logs:
+            result["audit_logs"] = self.audit_logs
             
         return result
 

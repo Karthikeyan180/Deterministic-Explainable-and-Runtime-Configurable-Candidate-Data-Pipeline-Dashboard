@@ -143,3 +143,48 @@ class ConflictResolver:
         avg_conf = (sum(conf_scores) / len(conf_scores)) if conf_scores else 0.9
 
         return FieldValue(value=merged_list, confidence=round(avg_conf, 4), provenance=all_provs), None
+
+    def apply_human_override(
+        self,
+        profile: Any,
+        field_name: str,
+        new_value: Any,
+        reviewer_id: str = "system_reviewer",
+        reason: str = "Manual review override"
+    ) -> Any:
+        """Applies manual human override to a canonical candidate profile field."""
+        import time
+        old_field_val = getattr(profile, field_name, None)
+        old_val = old_field_val.value if old_field_val else None
+
+        override_provenance = ProvenanceEntry(
+            source_id="human_override",
+            raw_key="manual_override",
+            raw_value=old_val,
+            transformed_value=new_value,
+            transformation_rules=["human_override_by_reviewer"],
+            confidence_score=1.0,
+            timestamp=time.time()
+        )
+
+        existing_provenance = old_field_val.provenance if old_field_val else []
+        new_field_val = FieldValue(
+            value=new_value,
+            confidence=1.0,
+            provenance=[override_provenance] + existing_provenance
+        )
+        setattr(profile, field_name, new_field_val)
+
+        audit_entry = {
+            "candidate_id": profile.candidate_id,
+            "field_name": field_name,
+            "old_value": old_val,
+            "new_value": new_value,
+            "reviewer_id": reviewer_id,
+            "reason": reason,
+            "timestamp": time.time()
+        }
+        profile.audit_logs.append(audit_entry)
+
+        profile.conflicts = [c for c in profile.conflicts if c.field_name != field_name]
+        return profile
