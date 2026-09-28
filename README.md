@@ -24,10 +24,15 @@ This repository contains an integrated software solution designed to ingest hete
 - **Conflict Resolution & Lineage Provenance**:
   - Resolves competing multi-source values using policies (`highest_confidence`, `source_priority`, `latest_timestamp`, `array_union`)
   - Audits line-by-line field lineage: source file, raw key, raw value, applied rules, and confidence.
+- **Human Override & Governance**:
+  - Recruiter manual override modal on Web SPA & REST API (`/api/override`)
+  - Automatically flags fields with low confidence (< 0.70) or active conflicts with visual warning badges
+  - Persistent, immutable audit trail logging (`data/audit_log.json`) accessible via `/api/audit-trail`.
+- **System Resilience & Concurrency**: Multi-threaded request isolation, corrupted payload recovery, and service interruption resilience.
 - **JSON Schema Validation**: Validates all generated output profiles against `config/output_schema.json`.
 - **Robust Edge-Case Handling**: Graceful error logging for malformed JSON/CSV syntax, missing mandatory fields, and corrupted text encodings (UTF-8 BOM, Latin-1/CP1252 accents, corrupted binary bytes, null characters).
 - **Large Dataset Stress-Testing**: Scalable candidate blocking algorithms supporting 10,000+ candidate records with peak memory profiling (`tracemalloc`).
-- **Zero Required External Dependencies**: Core engine built with pure Python 3 standard library (`dataclasses`, `json`, `csv`, `re`, `http.server`, `unittest`, `tracemalloc`), enabling instant execution on any OS.
+- **Zero Required External Dependencies**: Core engine built with pure Python 3 standard library (`dataclasses`, `json`, `csv`, `re`, `http.server`, `unittest`, `tracemalloc`, `threading`), enabling instant execution on any OS.
 - **Interactive Web Dashboard & CLI**: Single Page Application (SPA) dashboard and rich command-line tool.
 
 ---
@@ -42,29 +47,32 @@ This repository contains an integrated software solution designed to ingest hete
 ├── data/
 │   ├── sample_candidates.json # Sample heterogeneous candidate JSON
 │   ├── sample_candidates.csv  # Sample heterogeneous candidate CSV
-│   └── sample_resumes.txt     # Sample unstructured resume text records
+│   ├── sample_resumes.txt     # Sample unstructured resume text records
+│   └── audit_log.json         # Persistent human override audit trail log
 ├── scripts/
 │   └── generate_large_dataset.py # Synthetic 10,000+ record generator
 ├── src/
-│   ├── models.py              # Core dataclasses (CanonicalProfile, FieldValue, Provenance)
+│   ├── models.py              # Dataclasses (CanonicalProfile, FieldValue, HumanOverride)
 │   ├── ingestion.py           # Multi-source ingestion parsers with encoding resilience
 │   ├── field_mapper.py        # Configurable field mapping engine
 │   ├── normalization.py      # Deterministic normalizers
 │   ├── deduplication.py      # Indexed deduplication engine & candidate blocking
-│   ├── conflict_resolution.py# Conflict resolution policies & audit log generator
+│   ├── conflict_resolution.py# Conflict resolution policies & human override engine
 │   ├── provenance_scoring.py # Provenance tracking & confidence scoring
 │   ├── schema_validator.py   # JSON Schema validation engine
 │   └── pipeline.py            # Pipeline orchestrator
 ├── web/
-│   └── index.html             # Interactive Web Dashboard SPA
+│   └── index.html             # Interactive Web Dashboard SPA with Override Modal
 ├── tests/
 │   ├── test_pipeline.py       # Integration & core unit test suite
 │   ├── test_edge_cases.py     # Edge-case test suite (malformed inputs, encodings)
-│   └── test_scaling.py        # Real-world dataset scaling & memory stress tests
+│   ├── test_scaling.py        # Real-world dataset scaling & memory stress tests
+│   └── test_resilience.py     # System resilience & concurrent request test suite
 ├── cli.py                     # Command Line Interface (CLI)
-├── server.py                  # Web Server & REST API Host
+├── server.py                  # Web Server & REST API Host (/api/ingest, /api/override, /api/audit-trail)
 ├── evaluator.py               # Benchmark evaluation engine
 ├── Review_1_Report.md         # CoE Growth Project Phase 1 Report
+├── Review_2_Report.md         # CoE Growth Project Phase 2 Report (70% Completion Submission)
 └── README.md                  # System Documentation
 ```
 
@@ -78,12 +86,6 @@ To directly inspect the codebase version history and verify incremental phase de
 # View complete commit history
 git log --oneline --graph --all
 ```
-
-### Commit Structure:
-1. `8f87e8c`: `feat: initial candidate transformation architecture (models, ingestion, normalization, field mapping, conflict resolution, web dashboard)`
-2. `0a4c4cf`: `docs: Phase 1 completion report, baseline evaluator, schema validation, and core unit test suite`
-3. `3960bfd`: `test: expand edge-case unit test suite for malformed JSON/CSV, missing fields, and corrupted text encodings`
-4. `967018c`: `perf: implement candidate blocking deduplication, 10k dataset generator, stress testing & memory profiling`
 
 ---
 
@@ -113,13 +115,16 @@ Compare baseline manual processing vs automated pipeline performance:
 python cli.py evaluate
 ```
 
-### 4. Run Edge-Case Unit Test Suite
+### 4. Run Comprehensive Automated Test Suites
 
-Execute unit test suites covering edge cases, malformed JSON/CSV, missing fields, and corrupted text encodings:
+Execute all 31 unit, edge-case, scaling, and resilience test cases:
 
 ```bash
-# Run all unit tests (28+ test cases)
+# Run all unit tests (31 test cases)
 python -m unittest discover -s tests -p "test_*.py"
+
+# Run resilience test suite (concurrent API & service interruption)
+python -m unittest tests/test_resilience.py
 
 # Run specific edge-case suite
 python -m unittest tests/test_edge_cases.py
@@ -137,7 +142,7 @@ python cli.py stress-test --count 10000
 python -m unittest tests/test_scaling.py
 ```
 
-### 6. Launch Interactive Web Dashboard
+### 6. Launch Interactive Web Dashboard & Decision Support UI
 
 Start the Web UI server:
 
@@ -146,6 +151,12 @@ python cli.py server --port 8080
 ```
 
 Open your browser and navigate to: **`http://localhost:8080`**
+
+- **Tab 1**: Pipeline Run & Live Payload Ingestion
+- **Tab 2**: Canonical Profiles & Interactive Human Override Modal
+- **Tab 3**: Deduplication Matrix & Conflict Audit Trail
+- **Tab 4**: Human Override & Decision Support Audit Log Viewer
+- **Tab 5**: Evaluation & Benchmarks Dashboard
 
 ---
 
