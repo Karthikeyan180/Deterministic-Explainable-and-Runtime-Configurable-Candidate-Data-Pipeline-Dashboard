@@ -85,8 +85,9 @@ class DataNormalizer:
 
     def normalize_phone(self, val: Any) -> Tuple[Optional[str], List[str]]:
         """
-        Normalizes phone numbers:
+        Normalizes phone numbers to standard E.164 format:
         "+1 (555) 019-2834" -> "+15550192834"
+        "0091 9876543210" -> "+919876543210"
         Returns (normalized_value, transformation_rules_applied).
         """
         if not val or not isinstance(val, (str, int, float)):
@@ -95,21 +96,28 @@ class DataNormalizer:
         raw = str(val).strip()
         rules = []
 
-        # Keep leading plus if present
         has_plus = raw.startswith("+")
-
-        # Extract only numeric digits
         digits = re.sub(r'\D', '', raw)
         if not digits:
             return None, ["no_digits_found"]
 
         rules.append("removed_non_digits")
 
+        if not has_plus:
+            if digits.startswith("00") and len(digits) > 10:
+                digits = digits[2:]
+                has_plus = True
+                rules.append("converted_double_zero_prefix_to_plus")
+
         if has_plus:
             norm = f"+{digits}"
             rules.append("retained_country_code_plus")
+        elif len(digits) >= 11:
+            norm = f"+{digits}"
+            rules.append("inferred_international_e164")
         else:
             norm = digits
+            rules.append("standard_local_digits")
 
         return norm, rules
 

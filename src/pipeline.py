@@ -175,3 +175,83 @@ class CandidateTransformationPipeline:
         # Compute aggregate profile confidence
         profile.overall_confidence = self.confidence_scorer.compute_overall_profile_confidence(profile)
         return profile
+
+    def export_to_sqlite(self, canonical_profiles: List[CanonicalProfile], db_path: str = "data/canonical_candidates.db") -> str:
+        """Exports canonical profiles to a local SQLite database sink."""
+        import sqlite3
+        import os
+
+        if os.path.dirname(db_path):
+            os.makedirs(os.path.dirname(db_path), exist_ok=True)
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS canonical_candidates (
+                candidate_id TEXT PRIMARY KEY,
+                name TEXT,
+                email TEXT,
+                phone TEXT,
+                title TEXT,
+                location TEXT,
+                experience_years REAL,
+                skills TEXT,
+                overall_confidence REAL,
+                merged_sources TEXT,
+                created_at REAL
+            )
+        """)
+
+        for p in canonical_profiles:
+            prof_dict = p.to_dict().get("profile", {})
+            cand_id = p.candidate_id
+            name = prof_dict.get("name", {}).get("value") if prof_dict.get("name") else None
+            email = prof_dict.get("email", {}).get("value") if prof_dict.get("email") else None
+            phone = prof_dict.get("phone", {}).get("value") if prof_dict.get("phone") else None
+            title = prof_dict.get("title", {}).get("value") if prof_dict.get("title") else None
+            loc = prof_dict.get("location", {}).get("value") if prof_dict.get("location") else None
+            exp = prof_dict.get("experience_years", {}).get("value") if prof_dict.get("experience_years") else None
+            skills_list = prof_dict.get("skills", {}).get("value", []) if prof_dict.get("skills") else []
+            skills_str = ", ".join(skills_list) if isinstance(skills_list, list) else str(skills_list)
+            conf = p.overall_confidence
+            sources = ", ".join(p.merged_source_ids)
+
+            cursor.execute("""
+                INSERT OR REPLACE INTO canonical_candidates (
+                    candidate_id, name, email, phone, title, location, experience_years, skills, overall_confidence, merged_sources, created_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """, (cand_id, name, email, phone, title, loc, exp, skills_str, conf, sources, time.time()))
+
+        conn.commit()
+        conn.close()
+        return db_path
+
+    def export_to_csv(self, canonical_profiles: List[CanonicalProfile], csv_path: str = "data/canonical_candidates.csv") -> str:
+        """Exports canonical profiles to a CSV spreadsheet sink."""
+        import csv
+        import os
+
+        if os.path.dirname(csv_path):
+            os.makedirs(os.path.dirname(csv_path), exist_ok=True)
+        headers = ["candidate_id", "name", "email", "phone", "title", "location", "experience_years", "skills", "overall_confidence", "merged_sources"]
+
+        with open(csv_path, "w", encoding="utf-8", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=headers)
+            writer.writeheader()
+            for p in canonical_profiles:
+                prof_dict = p.to_dict().get("profile", {})
+                skills_list = prof_dict.get("skills", {}).get("value", []) if prof_dict.get("skills") else []
+                writer.writerow({
+                    "candidate_id": p.candidate_id,
+                    "name": prof_dict.get("name", {}).get("value") if prof_dict.get("name") else "",
+                    "email": prof_dict.get("email", {}).get("value") if prof_dict.get("email") else "",
+                    "phone": prof_dict.get("phone", {}).get("value") if prof_dict.get("phone") else "",
+                    "title": prof_dict.get("title", {}).get("value") if prof_dict.get("title") else "",
+                    "location": prof_dict.get("location", {}).get("value") if prof_dict.get("location") else "",
+                    "experience_years": prof_dict.get("experience_years", {}).get("value") if prof_dict.get("experience_years") else "",
+                    "skills": ", ".join(skills_list) if isinstance(skills_list, list) else str(skills_list),
+                    "overall_confidence": p.overall_confidence,
+                    "merged_sources": ", ".join(p.merged_source_ids)
+                })
+
+        return csv_path

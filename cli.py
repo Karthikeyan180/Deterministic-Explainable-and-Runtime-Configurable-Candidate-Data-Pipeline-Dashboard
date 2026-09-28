@@ -35,6 +35,14 @@ def run_pipeline_cmd(args):
     else:
         print(json.dumps(res_dict, indent=2))
 
+    if hasattr(args, "export_db") and args.export_db:
+        db_p = pipeline.export_to_sqlite(result.canonical_profiles, args.export_db)
+        print(f"[+] Canonical profiles exported to SQLite DB: {db_p}")
+
+    if hasattr(args, "export_csv") and args.export_csv:
+        csv_p = pipeline.export_to_csv(result.canonical_profiles, args.export_csv)
+        print(f"[+] Canonical profiles exported to CSV: {csv_p}")
+
     print(f"[+] Processed {result.processed_count}/{result.total_raw_records} raw records into {len(result.canonical_profiles)} canonical profiles in {result.execution_time_ms:.2f} ms.")
 
 
@@ -128,6 +136,8 @@ def main():
     p_run = subparsers.add_parser("run", help="Run ingestion and transformation pipeline")
     p_run.add_argument("--input", "-i", nargs="+", required=True, help="Input data files (JSON, CSV, TXT)")
     p_run.add_argument("--output", "-o", help="Output JSON path")
+    p_run.add_argument("--export-db", help="Export canonical profiles to SQLite DB file (e.g. data/canonical_candidates.db)")
+    p_run.add_argument("--export-csv", help="Export canonical profiles to CSV file (e.g. data/canonical_candidates.csv)")
     p_run.add_argument("--mapping-config", default="config/field_mappings.json", help="Field mapping JSON config")
     p_run.add_argument("--schema-config", default="config/output_schema.json", help="Output JSON Schema config")
     p_run.add_argument("--dedup-config", default="config/dedup_rules.json", help="Deduplication rules config")
