@@ -12,6 +12,7 @@ htmlcov/
 scratch/
 *.tmp
 data/large_scale/
+*.java
 
 # IDE / OS files
 .vscode/

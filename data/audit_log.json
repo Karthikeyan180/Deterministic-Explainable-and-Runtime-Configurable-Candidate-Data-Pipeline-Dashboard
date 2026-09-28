@@ -1,0 +1,110 @@
+[
+  {
+    "candidate_id": "CAN-TEST-100",
+    "field_name": "email",
+    "old_value": "old@example.com",
+    "new_value": "new@example.com",
+    "reviewer_id": "test_reviewer",
+    "reason": "Resilience test override",
+    "timestamp": 1790585221.0501013
+  },
+  {
+    "candidate_id": "CAN-0000",
+    "field_name": "email",
+    "old_value": null,
+    "new_value": "override0@test.com",
+    "reviewer_id": "reviewer_0",
+    "reason": "Concurrent stress override",
+    "timestamp": 1790585226.1003242
+  },
+  {
+    "candidate_id": "CAN-0001",
+    "field_name": "email",
+    "old_value": null,
+    "new_value": "override1@test.com",
+    "reviewer_id": "reviewer_1",
+    "reason": "Concurrent stress override",
+    "timestamp": 1790585226.165157
+  },
+  {
+    "candidate_id": "CAN-0003",
+    "field_name": "email",
+    "old_value": null,
+    "new_value": "override3@test.com",
+    "reviewer_id": "reviewer_3",
+    "reason": "Concurrent stress override",
+    "timestamp": 1790585228.16907
+  },
+  {
+    "candidate_id": "CAN-0002",
+    "field_name": "email",
+    "old_value": null,
+    "new_value": "override2@test.com",
+    "reviewer_id": "reviewer_2",
+    "reason": "Concurrent stress override",
+    "timestamp": 1790585228.19623
+  },
+  {
+    "candidate_id": "CAN-0004",
+    "field_name": "email",
+    "old_value": null,
+    "new_value": "override4@test.com",
+    "reviewer_id": "reviewer_4",
+    "reason": "Concurrent stress override",
+    "timestamp": 1790585228.2533736
+  },
+  {
+    "candidate_id": "CAN-TEST-100",
+    "field_name": "email",
+    "old_value": "old@example.com",
+    "new_value": "new@example.com",
+    "reviewer_id": "test_reviewer",
+    "reason": "Resilience test override",
+    "timestamp": 1790585242.7806199
+  },
+  {
+    "candidate_id": "CAN-0001",
+    "field_name": "email",
+    "old_value": null,
+    "new_value": "override1@test.com",
+    "reviewer_id": "reviewer_1",
+    "reason": "Concurrent stress override",
+    "timestamp": 1790585245.2917771
+  },
+  {
+    "candidate_id": "CAN-0000",
+    "field_name": "email",
+    "old_value": null,
+    "new_value": "override0@test.com",
+    "reviewer_id": "reviewer_0",
+    "reason": "Concurrent stress override",
+    "timestamp": 1790585245.3601663
+  },
+  {
+    "candidate_id": "CAN-0002",
+    "field_name": "email",
+    "old_value": null,
+    "new_value": "override2@test.com",
+    "reviewer_id": "reviewer_2",
+    "reason": "Concurrent stress override",
+    "timestamp": 1790585247.306271
+  },
+  {
+    "candidate_id": "CAN-0003",
+    "field_name": "email",
+    "old_value": null,
+    "new_value": "override3@test.com",
+    "reviewer_id": "reviewer_3",
+    "reason": "Concurrent stress override",
+    "timestamp": 1790585247.4622514
+  },
+  {
+    "candidate_id": "CAN-0004",
+    "field_name": "email",
+    "old_value": null,
+    "new_value": "override4@test.com",
+    "reviewer_id": "reviewer_4",
+    "reason": "Concurrent stress override",
+    "timestamp": 1790585247.520245
+  }
+]
